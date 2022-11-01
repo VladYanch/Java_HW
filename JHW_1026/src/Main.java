@@ -5,12 +5,18 @@ public class Main {
         Electronics el1= new Electronics("AppleAir", 1000, "laptop");
         Electronics el2= new Electronics("Galaxy20", 1200, "mobile");
         Products food1 = new Products("Milk", 1.5,1);
-        Goods[] good = {cloth1,el1,el2,food1};
+        Goods[] good = new Goods[]{cloth1, el1, el2, food1};
+
 
         for (int i = 0; i < good.length; i++) {
             System.out.println(good[i].name+" : "+good[i].price);
         }
 
+        //Basket[] basket = new Basket[];
+        Goods[] basket = new Basket(0,0, new Products[]{food1});
+        basket.addBasket(food1);
+        basket.addBasket(el1);
+        basket.checkOut();
     }
 }
 

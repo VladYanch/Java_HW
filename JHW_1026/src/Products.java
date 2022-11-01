@@ -7,6 +7,7 @@ public class Products extends Goods {
     }
 
     double getPrice (double price) {
+
         return price+priceSpeedDelivery;
     }
 }

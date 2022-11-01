@@ -7,4 +7,8 @@ public abstract class Goods {
         this.price = price;
     }
 
+    public String toString() {
+        return null;
+    }
+
 }

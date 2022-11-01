@@ -5,4 +5,13 @@ public class Clothes extends Goods {
         super(name, price);
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        return "Clothes{"  +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                + "size=" + size +
+                '}';
+    }
 }

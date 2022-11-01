@@ -14,4 +14,12 @@ public class Electronics extends Goods{
         return "Contract";
     }
 
+    @Override
+    public String toString() {
+        return "Electronics{" +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                "type='" + type + '\'' +
+                '}';
+    }
 }
