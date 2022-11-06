@@ -13,7 +13,7 @@ public class Main {
         }
 
         //Basket[] basket = new Basket[];
-        Goods[] basket = new Basket(0,0, new Products[]{food1});
+        Basket basket = new Basket(good);
         basket.addBasket(food1);
         basket.addBasket(el1);
         basket.checkOut();
