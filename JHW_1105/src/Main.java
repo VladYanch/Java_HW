@@ -5,7 +5,7 @@ public class Main {
 
         MailDeliveryService mds = new DHL();
         Sender sender = new Sender();
-        sender.sender(mds);
+        mds=sender.sender(mds);
         mds.sendMail();
     }
 }
