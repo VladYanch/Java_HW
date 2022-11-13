@@ -1,7 +1,8 @@
-public class Superior extends Room{
+public class Standard extends Room{
 
 //    private String fitness = "not ordered";
-    public Superior(String roomName, int roomNumber, int price) {
+
+    public Standard(String roomName, int roomNumber, int price) {
         super(roomName, roomNumber, price);
     }
 
@@ -10,8 +11,9 @@ public class Superior extends Room{
         return price;
     }
 
+    @Override
     public String toString() {
-        return "Superior{" +
+        return "Standard{" +
                 "roomName='" + roomName + '\'' +
                 ", roomNumber=" + roomNumber +
                 ", price=" + price +

@@ -1,41 +1,46 @@
 public class Booking {
-    private int size;
-    private  int capacity;
-
     private String guestName;
-    public MyDate bookDate;
-    private Room[] bookingArray;
+    private MyDate bookingDate;
 
-    public Tickets(int capacity) {
-        this.capacity =capacity;
-        ticketsArray = new Ticket[capacity];
-        size =0;
-    }
+    public Room room;
+    public int night;
 
-    public boolean add(Ticket ticket){
-        if(size<ticketsArray.length){
-            ticketsArray[size]=ticket;
-            size++;
-            return true;
+    public String fitness;
+
+    public Booking(String guestName, MyDate bookingDate, Room room, int night) {
+        this.guestName = guestName;
+        this.bookingDate = bookingDate;
+        this.room = room;
+        this.night = night;
+        if (room.roomName == "Standard" || room.roomName == "Superior") {
+            this.fitness = "not ordered";
         } else {
-            return false;
+            this.fitness = "included";
         }
     }
 
-    public String toString(){
-        String res="";
-        for (int i=0; i<ticketsArray.length && i<size;i++){
-            res+=ticketsArray[i]+System.lineSeparator();
-        }
-        res+="---------------"+System.lineSeparator()+ "Total: "+ size +" tickets";
-        return res;
-    }
-
-    public Ticket get(int index){
-        if (index<size) {
-            return ticketsArray[index];
+ //   public void getFitness(Booking booking) {
+    public void getFitness() {
+        int priceDayFitness = 10;
+        if (room.roomName == "Standard" || room.roomName == "Superior") {
+            room.price+=priceDayFitness* night;
+            fitness = "ordered";
         } else {
-            return null;
+            System.out.println("Fitness include in price of room " + room.roomName + " N" + room.roomNumber);
         }
+
+    }
+
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "guestName='" + guestName + '\'' +
+                ", bookingDate=" + bookingDate +
+                ", room=" + room +
+                ", night=" + night +
+                ", fitness= " + fitness +
+                '}';
     }
 }
+
