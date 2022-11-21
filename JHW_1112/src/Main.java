@@ -23,5 +23,7 @@ public class Main {
         booking = registration.get(3);
         booking.getFitness();
         System.out.println(booking.toString());
+
+
     }
 }

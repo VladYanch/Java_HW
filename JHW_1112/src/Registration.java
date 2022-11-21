@@ -21,6 +21,10 @@ public class Registration {
         }
     }
 
+    public void delBooking(int room) {
+        bookingArray[room]=null;
+    }
+
     public String toString(){
         String res="";
         for (int i=0; i<bookingArray.length && i<size;i++){
