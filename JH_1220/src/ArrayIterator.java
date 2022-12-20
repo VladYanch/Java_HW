@@ -29,13 +29,15 @@ public class ArrayIterator<T> implements Iterator<T> {
     }
 
     public void remove(int index) {
-        T[] arrDop = (T[]) new Array[arr.length - 1];
-        //if ( index == -1) return;
-        for (int i = 0; i < index; i++) {
-            arrDop[i] = (T) arr[i];
-        }
-        for (int i = index; i < arr.length-1; i++) arrDop[i] = (T) arr[i+1];
-        arr = arrDop;
+        T[] tmp = (T[]) new Object[arr.length - 1];
+        if ( index >= arr.length) return;
+//        for (int i = 0; i < index; i++) {
+//            arrDop[i] = (T) arr[i];
+//        }
+//        for (int i = index; i < arr.length-1; i++) arrDop[i] = (T) arr[i+1];
+
+        System.arraycopy(arr, 0, tmp, 0, arr.length-1);
+        arr = tmp;
     }
 
     public void print() {

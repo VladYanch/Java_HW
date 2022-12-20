@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println("----------------------");
 
-//        ((ArrayIterator<Integer>) it).remove(5);
+//        it.remove(5); //Remove так и не получился
         while (it.hasNext()) {
             int el = it.next();
             System.out.println(el);
