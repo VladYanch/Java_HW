@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class Main {
@@ -19,11 +20,23 @@ public class Main {
 
         System.out.println("----------------------");
 
-//        it.remove(5); //Remove так и не получился
-        while (it.hasNext()) {
-            int el = it.next();
-            System.out.println(el);
-        }
+        ArrayIterator<Integer> it1 = new ArrayIterator<Integer>(arr);
+        it1.next();
+        it1.next();
+        it1.next();
+        it1.next();
+        it1.remove();
+//        while (it.hasNext()) {
+//            int el = it.next();
+//            System.out.println(el);
+//        }
+        System.out.println(Arrays.toString(arr));
+        it1.remove();
+        System.out.println(Arrays.toString(arr));
+        System.out.println(arr.length);
+        System.out.println(it1.size());
+
+
 
         String[] str = {"a","b","c","d","e"};
         Iterator<String> strIt = new ArrayIterator<>(str);
