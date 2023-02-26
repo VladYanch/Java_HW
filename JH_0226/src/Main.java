@@ -15,6 +15,15 @@ public class Main {
         scheduleList(2); //FEBRUARY
         System.out.println("-".repeat(135));
         System.out.println("Arriving Berlin time:" + calcArrivingTime(LocalDate.now()));
+        System.out.println("-".repeat(135));
+        LocalTime departureTime = LocalTime.of(15, 5);
+        int durationHours = 10;
+        int durationMinutes = 50;
+        LocalTime arrivalTime = departureTime.plusHours(durationHours).plusMinutes(durationMinutes);
+
+        System.out.println("Рейс из Лос-Анджелеса во Франкфурт отправляется в " + departureTime
+                + " и прибывает в " + arrivalTime);
+
     }
 
     public static void scheduleList(int month) {
@@ -40,9 +49,11 @@ public class Main {
             ZonedDateTime.of(localDate.getYear(),
                             localDate.getMonthValue(),
                             localDate.getDayOfMonth(),15,5,0,0, ZoneId.of("America/Los_Angeles"));
-        ZonedDateTime dateArrival = dateDeparture.plusHours(10).plusMinutes(5) ;
+        ZonedDateTime dateArrival = dateDeparture.plusHours(10).plusMinutes(50) ;
         return dateArrival.withZoneSameInstant(ZoneId.of("Europe/Berlin"));
     }
+
+
 }
 
 //    ZoneId zoneDeparture = ZoneId.of("America/Los_Angeles");
