@@ -1,0 +1,4 @@
+# 1; SEven: 2478; aOdd: 49,47; Max: 100; Min: 1 
+# 2; SEven: 3000; aOdd: 49,20; Max: 538; Min: 1 
+# 3; SEven: 3710; aOdd: 50,00; Max: 736; Min: 1 
+# 4; SEven: 2550; aOdd: 58,56; Max: 353; Min: 1 
