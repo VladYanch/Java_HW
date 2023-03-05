@@ -1,6 +1,8 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
+
+    public static int sec = 0;
     public static void main(String[] args) {
 
         AtomicInteger count1 = new AtomicInteger();
@@ -9,6 +11,20 @@ public class Main {
         AtomicInteger count4 = new AtomicInteger();
         int number = 5;
         long start = System.currentTimeMillis();
+
+        Thread daemon = new Thread(() -> {
+            while (true) {
+//            int sec = 0;
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Daemon work: " + ++sec*5 + " sec");}
+        });
+
+        daemon.setDaemon(true);
+        daemon.start(); //TODO: Daemon start at start and say every 5 sec :)
 
         System.out.println("Последовательный процесс");
         System.out.println("Total divisible by " + number + ": " + counter(number,Integer.MIN_VALUE,Integer.MAX_VALUE) + " time: " +
@@ -21,6 +37,8 @@ public class Main {
         Runnable task2 = () -> {count2.set(counter(number,0, Integer.MAX_VALUE));
             System.out.println("task2");
             System.out.println(count2.get()); };
+
+
 
         Thread thread1 = new Thread(task1);
         Thread thread2 = new Thread(task2);
@@ -45,16 +63,16 @@ public class Main {
 
         System.out.println("4 процесса");
 
-        Runnable task3 = () -> {count1.set(counter(number, Integer.MIN_VALUE, Integer.MIN_VALUE/2));
+        Runnable task3 = () -> {count1.set(counter(number, Integer.MIN_VALUE, (int) (Integer.MIN_VALUE * 0.2)));
             System.out.println("task1");
             System.out.println(count1.get()); };
-        Runnable task4 = () -> {count2.set(counter(number,Integer.MIN_VALUE/2, 0));
+        Runnable task4 = () -> {count2.set(counter(number, (int) (Integer.MIN_VALUE*0.2), 0));
             System.out.println("task2");
             System.out.println(count2.get()); };
-        Runnable task5 = () -> {count3.set(counter(number, 0, Integer.MAX_VALUE/2));
+        Runnable task5 = () -> {count3.set(counter(number, 0, Integer.MAX_VALUE/3));
             System.out.println("task3");
             System.out.println(count3.get()); };
-        Runnable task6 = () -> {count4.set(counter(number,Integer.MAX_VALUE/2, Integer.MAX_VALUE));
+        Runnable task6 = () -> {count4.set(counter(number,Integer.MAX_VALUE/3, Integer.MAX_VALUE));
             System.out.println("task4");
             System.out.println(count4.get()); };
 
@@ -82,6 +100,7 @@ public class Main {
         System.out.println("Time " + (System.currentTimeMillis() - start) + " Amount: " +
                     (long) (count1.get()+count2.get()+count3.get()+count4.get())); //TODO: Time 8986 Amount: 858993459
 
+        System.out.println("Daemon work total: " + ++sec*5 + " sec");
         //TODO ВЫВОД: т.к у меня компьютер 2 ядерный то дальнейшее увеличение потоков более чем 2 неэффективно
     }
 
@@ -97,7 +116,7 @@ public class Main {
 
 }
 
-//    Взять  пример расчетной задачи (см. слайды к занятию) - задача 1:
+//    Взять пример расчетной задачи (см. слайды к занятию) - задача 1:
 //    посчитать количество целых чисел в диапазоне от Integer.MIN_VALUE до Integer.MAX_VALUE,
 //    которые делятся на заданное целое число без остатка.
 //    Решить данную задачу последовательно и параллельно в нескольких потоках. Сравнить время выполнения.
