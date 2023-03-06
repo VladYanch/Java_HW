@@ -15,8 +15,7 @@ public class CommonElementsInArray {
     }
 
     public static int[] findCommonElementsInArray(int[] arrA, int[] arrB) {
-        if (arrA == null) return new int[0];
-        if (arrB == null) return new int[0];
+        if (arrA == null || arrB == null || arrA.length == 0 || arrB.length == 0) return new int[0];
 
         Arrays.sort(arrB);
         return Arrays.stream(arrA).distinct()
@@ -24,18 +23,3 @@ public class CommonElementsInArray {
                 .toArray();
     }
 }
-
-
-//        List<Integer> resultArr = new ArrayList<>();
-//        Arrays.sort(arrB);
-//        System.out.println(Arrays.toString(Arrays.stream(arrA)
-//                .filter(x -> Arrays.binarySearch(arrB, x) > 0)
-//                .toArray()));
-
-//          for (int a: arrA) {
-//              if (Arrays.binarySearch(arrB,a) > 0 ) {
-//                  resultArr.add(a);
-//              }
-//          }
-//        System.out.println(Arrays.toString(resultArr.stream().distinct().toArray()));
-//        return resultArr;

@@ -20,6 +20,11 @@ class CommonElementsInArrayTest {
         int[] expected = {1,7};
         Assertions.assertArrayEquals(expected, checker.findCommonElementsInArray(a,b));
 
+        a = new int[] {0,0};
+        b = new int[] {1,1};
+        expected = new int[] {};
+        Assertions.assertArrayEquals(expected, checker.findCommonElementsInArray(a,b));
+
         a = new int[] {};
         b = new int[] {1, 0, 6, 15, 6, 4, 7, 0};
         expected = new int[] {};

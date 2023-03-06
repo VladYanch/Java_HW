@@ -5,20 +5,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class UserService {
+class UserServiceTest {
 
     private static UserService service;
     private static UserRepository repository;
     private static User user1;
     private static User user2;
-
-    public UserService(UserRepository repository) {
-    }
 
     @BeforeEach
     public void init() {
@@ -54,11 +50,10 @@ class UserService {
     }
 
     @Test
-    public void deleteInactive(List<User> users){
-        for (User user : users) {
-            if (!user.isActive()){
-                repository.deleteUser(user.getId());
-            }
-        }
+    public void deleteInactive() {
+        service.deleteInactive(Arrays.asList(user1, user2));
+
+        Mockito.verify(repository, Mockito.times(0)).deleteUser(1);
+        Mockito.verify(repository).deleteUser(2);
     }
 }
