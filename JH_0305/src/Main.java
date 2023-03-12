@@ -1,55 +1,34 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
-    public static <ex, e> void main(String[] args) {
-        try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("file.txt"));
-             BufferedReader fileReader = new BufferedReader(new FileReader("file.txt"))) {
+    /*
+     Один поток обращается к файлу и записывает в него данные,
+     второй поток открывает файл и выводит его содержимое на консоль.
+     Реализовать потокобезопасным образом.
+     */
+    public static void main(String[] args) throws Exception {
+        String fileName = "HW/HW_20230305/file";
+        Object mutex = new Object();
 
-            Runnable taskWrite = (() -> {
-                String[] arr = {"Hello", "Java", "and", "World"};
-                for (int i = 0; i < arr.length; i++) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        fileWriter.write(arr[i]);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-//            Runnable taskRead = (() -> {
-//                for (int i = 0; i < 4; i++) {
-//                    try {
-//                        Thread.sleep(8000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    try {
-//                        System.out.println(fileReader.readLine());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    });
+        WritingThread writingThread = new WritingThread(fileName, mutex);
+        writingThread.start();
 
-                    Thread threadWrite = new Thread(taskWrite);
-//                    Thread threadRead = new Thread(taskRead);
+        Thread.sleep(1000L);
 
-                    threadWrite.start();
+        ReadingThread readingThread = new ReadingThread(fileName, mutex);
+        readingThread.start();
 
+        Thread.sleep(5000L);
 
-            } catch (FileNotFoundException e) {
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        writingThread.interrupt();
+        writingThread.join();
 
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        System.out.println("Hello world!");
+        readingThread.interrupt();
+        readingThread.join();
     }
 }
+
