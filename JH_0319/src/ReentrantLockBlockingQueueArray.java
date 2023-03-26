@@ -21,28 +21,33 @@ import java.util.concurrent.locks.ReentrantLock;
 // При реализации можно использовать класс MyBlockingQueue или ReentrantLockBlockingQueue в репозитории
 // или одну из стандартных реализаций BlockingQueue из библиотеки.
 
-public class ReentrantLockBlockingQueueArray<T> {
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-    private Queue<T> queue = new ArrayDeque<>();
+public class ReentrantLockBlockingQueue<T> {
+
+    private Queue<T> queue;
     private Lock lock = new ReentrantLock(true);
-    private Condition condition = lock.newCondition();
-
+    private Condition queueIsEmpty = lock.newCondition();
+    private Condition queueIsFull = lock.newCondition();
     private int size;
 
-    private int index;
-
-    public ReentrantLockBlockingQueueArray(int size) {
+    public ReentrantLockBlockingQueue(int size) {
         this.size = size;
-        this.queue = new ArrayDeque<>(size);
+        this.queue = new  ArrayDeque<>(size);
     }
 
     public void put(T item) {
         lock.lock();
         try {
-            if (queue.size() < size) {
-                queue.add(item);
-                condition.signal();
+            while (queue.size() >= size) {
+                queueIsFull.awaitUninterruptibly();
             }
+            queue.add(item);
+            queueIsEmpty.signal();
         } finally {
             lock.unlock();
         }
@@ -52,12 +57,9 @@ public class ReentrantLockBlockingQueueArray<T> {
         lock.lock();
         try {
             while (queue.isEmpty()){
-                try {
-                    condition.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                queueIsEmpty.awaitUninterruptibly();
             }
+            queueIsFull.signal();
             return queue.poll();
         } finally {
             lock.unlock();
@@ -75,74 +77,54 @@ public class ReentrantLockBlockingQueueArray<T> {
     }
 
 
-    public static void main(String[] args) {
-        ReentrantLockBlockingQueueArray queueArray = new ReentrantLockBlockingQueueArray(5);
-
-        ProducerString producerString = new ProducerString(queueArray,5);
-        ConsumerString consumerString = new ConsumerString(queueArray);
-
-        producerString.start();
-        consumerString.start();
-
-        try {
-            producerString.join();
-//            Thread.sleep(5000);
-//            consumerString.join();
-            Thread.sleep(15000);
-//            queueArray.put("exit");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }
 
-class ProducerString extends Thread {
-    private ReentrantLockBlockingQueueArray<String> queue;
+    private Queue<T> queue;
+    private Lock lock = new ReentrantLock(true);
+    private Condition queueIsEmpty = lock.newCondition();
+    private Condition queueIsFull = lock.newCondition();
     private int size;
 
-    public ProducerString(ReentrantLockBlockingQueueArray queue, int size) {
-        this.queue = queue;
+    public ReentrantLockBlockingQueue(int size) {
         this.size = size;
+        this.queue = new  ArrayDeque<>(size);
     }
-        @Override
-        public void run() {
 
+    public void put(T item) {
+        lock.lock();
         try {
-            for (int i = 1; i < 10; i++) {
-                if (queue.getSize() <= size) {
-                    queue.put("message: " + i);
-                    Thread.sleep(1000);
-                    System.out.println(Thread.currentThread().getName() + " message put in: " + i);
-                } else wait();
+            while (queue.size() >= size) {
+                queueIsFull.awaitUninterruptibly();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            queue.add(item);
+            queueIsEmpty.signal();
+        } finally {
+            lock.unlock();
         }
     }
-}
 
-class ConsumerString extends Thread {
-    private ReentrantLockBlockingQueueArray<String> queue;
+    public T take(){
+        lock.lock();
+        try {
+            while (queue.isEmpty()){
+                queueIsEmpty.awaitUninterruptibly();
+            }
+            queueIsFull.signal();
+            return queue.poll();
+        } finally {
+            lock.unlock();
+        }
 
-    public ConsumerString(ReentrantLockBlockingQueueArray queue) {
-        this.queue = queue;
     }
 
-    @Override
-    public void run() {
+    public int getSize(){
+        lock.lock();
         try {
-            while (true) {
-                Thread.sleep(5000);
-                String message = queue.take();
-                if (message.equals("exit")) break;
-                System.out.println(message + " take out");
-//                notify();
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            return queue.size();
+        } finally {
+            lock.unlock();
         }
     }
-}
 
+
+}

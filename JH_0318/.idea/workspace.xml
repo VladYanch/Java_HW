@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="299e1a6a-c07d-4d84-bfe0-8a2c36499367" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JH_0318.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Restoran.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ConsumerString.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ConsumerString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ProducerString.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ProducerString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ReentrantLockBlockingQueueArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ReentrantLockBlockingQueueArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JH_0319/src/ReentrantLockBlockingQueueArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/src/ReentrantLockBlockingQueueArray.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NExzzHFosm9pwu38bpKMnRPhtX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.Truck">
+    <configuration name="ExchangerExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ExchangerExample" />
+      <module name="JH_0318" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Truck" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Truck" />
+      <module name="JH_0318" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Truck" />
+        <item itemvalue="Application.ExchangerExample" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="299e1a6a-c07d-4d84-bfe0-8a2c36499367" name="Changes" comment="" />
+      <created>1679243308621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679243308621</updated>
+      <workItem from="1679243310082" duration="4978000" />
+      <workItem from="1679317569297" duration="426000" />
+      <workItem from="1679328487815" duration="120000" />
+      <workItem from="1679474242759" duration="987000" />
+      <workItem from="1679596153522" duration="598000" />
+      <workItem from="1679849509959" duration="360000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
