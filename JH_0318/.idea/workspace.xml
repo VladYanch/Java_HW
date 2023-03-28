@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="299e1a6a-c07d-4d84-bfe0-8a2c36499367" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JH_0318.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Restoran.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ConsumerString.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ConsumerString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ProducerString.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ProducerString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ReentrantLockBlockingQueueArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/out/production/JH_0319/ReentrantLockBlockingQueueArray.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JH_0319/src/ReentrantLockBlockingQueueArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JH_0319/src/ReentrantLockBlockingQueueArray.java" afterDir="false" />
-    </list>
+    <list default="true" id="299e1a6a-c07d-4d84-bfe0-8a2c36499367" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,6 +69,7 @@
       <workItem from="1679474242759" duration="987000" />
       <workItem from="1679596153522" duration="598000" />
       <workItem from="1679849509959" duration="360000" />
+      <workItem from="1679865863541" duration="456000" />
     </task>
     <servers />
   </component>
